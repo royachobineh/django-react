@@ -21,17 +21,17 @@ services:
     ports:
       - 6379:6379
 
-  django-api:
-    depends_on:
-      - postgres-db
-      - redis-server
-    build:
-      context: ./django-api
-    ports:
-      - '8000:8000'
-    container_name: django-api
-    volumes:
-      - ./django-api:/app/django-api
+  # django-api:
+  #   depends_on:
+  #     - postgres-db
+  #     - redis-server
+  #   build:
+  #     context: ./django-api
+  #   ports:
+  #     - '8000:8000'
+  #   container_name: django-api
+  #   volumes:
+  #     - ./django-api:/app/django-api
     # command:
     #   [
     #     './wait-for-it.sh',
