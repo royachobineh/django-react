@@ -1,0 +1,40 @@
+.sidenav-wrapper {
+  background-color: #f8f7fa;
+  height: 100vh;
+  left: 0;
+  padding: 75px 20px 0px;
+  position: fixed;
+  width: 275px;
+}
+
+.sidenav-wrapper > ul {
+  list-style-type: none;
+}
+
+.nav-item,
+.active-nav-item {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.nav-item > a,
+.active-nav-item > a {
+  border-radius: 5px;
+  color: inherit;
+  cursor: pointer;
+  display: inline-block;
+  padding: 15px 25px;
+  text-decoration-line: none;
+  transition: all 0.25s ease;
+  width: 100%;
+}
+
+.nav-item > a:hover {
+  color: white;
+  background-color: #2169f4;
+}
+
+.active-nav-item > a {
+  color: white;
+  background-color: #2169f4;
+}

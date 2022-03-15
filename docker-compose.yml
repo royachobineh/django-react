@@ -1,0 +1,57 @@
+version: '3'
+services:
+  postgres-db:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=postgres123
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=django-api
+    volumes:
+      - ./db-data/:/var/lib/postgresql/data/
+
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080
+
+  redis-server:
+    image: redis
+    ports:
+      - 6379:6379
+
+  django-api:
+    depends_on:
+      - postgres-db
+      - redis-server
+    build:
+      context: ./django-api
+    ports:
+      - '8000:8000'
+    container_name: django-api
+    volumes:
+      - ./django-api:/app/django-api
+    # command:
+    #   [
+    #     './wait-for-it.sh',
+    #     'postgres-db:5432',
+    #     '--',
+    #     'python',
+    #     'manage.py',
+    #     'runserver',
+    #     'localhost:8000',
+    #   ]
+
+  react-app:
+    depends_on:
+      - django-api
+    build:
+      context: ./react-app
+    ports:
+      - '3000:3000'
+    container_name: react-app
+    stdin_open: true
+    volumes:
+      - ./react-app:/app/react-app
+      - /app/react-app/node_modules

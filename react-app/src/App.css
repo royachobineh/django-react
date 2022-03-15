@@ -1,0 +1,7 @@
+main {
+  height: 100vh;
+  left: 275px;
+  padding: 50px;
+  position: relative;
+  width: calc(100vw - 275px);
+}
